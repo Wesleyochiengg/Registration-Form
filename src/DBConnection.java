@@ -13,7 +13,12 @@ public class DBConnection {
             Class.forName("com.mysql.cj.jdbc.Driver"); // Load MySQL JDBC Driver
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
             System.out.println("Connected to database successfully!");
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
+            System.out.println("JDBC Driver not found!");
+            e.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println("Database connection failed!");
+            e.printStackTrace();
         }
         return conn;
     }
